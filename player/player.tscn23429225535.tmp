@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://yjjijai7t87k"]
+
+[ext_resource type="PackedScene" uid="uid://gdxfofjexlwi" path="res://player/character_controller.tscn" id="1_oul6g"]
+[ext_resource type="Script" uid="uid://cd85433mmtjvs" path="res://player/trail.gd" id="2_rkbax"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oul6g"]
+radius = 5.0
+
+[node name="Player" type="CharacterBody2D" unique_id=668815064]
+
+[node name="Rectangle" type="Polygon2D" parent="." unique_id=2134416121]
+color = Color(0.18022507, 0.5581027, 0.9305576, 1)
+polygon = PackedVector2Array(-5, 5, -5, -5, 5, -5, 5, 5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1830856149]
+rotation = 1.5707964
+shape = SubResource("CircleShape2D_oul6g")
+
+[node name="CharacterController" parent="." unique_id=571828522 instance=ExtResource("1_oul6g")]
+
+[node name="DashTimer" type="Timer" parent="." unique_id=1371101028]
+wait_time = 0.065
+one_shot = true
+
+[node name="DashCooldown" type="Timer" parent="DashTimer" unique_id=913688490]
+one_shot = true
+
+[node name="Trail" type="Line2D" parent="." unique_id=939166219]
+points = PackedVector2Array(0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+width = 5.0
+default_color = Color(0.28800002, 0.44400004, 0.6, 0.3254902)
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource("2_rkbax")
+max_segments = null
+
+[node name="Timer" type="Timer" parent="Trail" unique_id=740497874]
+wait_time = 0.1
+autostart = true
+
+[connection signal="timeout" from="Trail/Timer" to="Trail" method="_on_timer_timeout"]

@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://yjjijai7t87k"]
+
+[ext_resource type="PackedScene" uid="uid://gdxfofjexlwi" path="res://player/character_controller.tscn" id="1_oul6g"]
+[ext_resource type="Script" uid="uid://cd85433mmtjvs" path="res://player/trail.gd" id="2_rkbax"]
+
+[sub_resource type="Curve" id="Curve_rkbax"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 0.70786524), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_rkbax"]
+offsets = PackedFloat32Array(0, 0.9814815)
+colors = PackedColorArray(0.38, 0.6073334, 1, 0, 0.33670002, 0.56601995, 0.91, 0.5921569)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oul6g"]
+radius = 5.0
+
+[node name="Player" type="CharacterBody2D" unique_id=668815064]
+
+[node name="Trail" type="Line2D" parent="." unique_id=939166219]
+width = 12.0
+width_curve = SubResource("Curve_rkbax")
+default_color = Color(0, 0, 0, 0)
+gradient = SubResource("Gradient_rkbax")
+script = ExtResource("2_rkbax")
+
+[node name="Rectangle" type="Polygon2D" parent="." unique_id=2134416121]
+color = Color(0.18022507, 0.5581027, 0.9305576, 1)
+polygon = PackedVector2Array(-8, 6, -8, -6, 8, -6, 8, 6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1830856149]
+rotation = 1.5707964
+shape = SubResource("CircleShape2D_oul6g")
+
+[node name="CharacterController" parent="." unique_id=571828522 instance=ExtResource("1_oul6g")]
+
+[node name="DashTimer" type="Timer" parent="." unique_id=1371101028]
+wait_time = 0.065
+one_shot = true
+
+[node name="DashCooldown" type="Timer" parent="DashTimer" unique_id=913688490]
+one_shot = true
