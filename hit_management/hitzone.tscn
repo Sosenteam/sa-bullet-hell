@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://r3ddyc6ns0hv"]
 
-[ext_resource type="Script" uid="uid://b0fmjxbuf805s" path="res://hitzone.gd" id="1_q2420"]
+[ext_resource type="Script" uid="uid://b0fmjxbuf805s" path="res://hit_management/hitzone.gd" id="1_q2420"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7t3w2"]
 size = Vector2(110, 171)
@@ -11,3 +11,5 @@ script = ExtResource("1_q2420")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=381806011]
 shape = SubResource("RectangleShape2D_7t3w2")
 debug_color = Color(0.9663777, 0.18915969, 0, 0.41960785)
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=1423423565]

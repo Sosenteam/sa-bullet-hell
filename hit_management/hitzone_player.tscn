@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://dcb6qsseco4lq"]
+
+[ext_resource type="Script" uid="uid://177mg5oy5hcg" path="res://hit_management/hitzone_player.gd" id="1_y6oul"]
+
+[sub_resource type="Animation" id="Animation_y6oul"]
+resource_name = "test"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HitzonePlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.23333333, 1.6333333),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"print_tree_pretty"
+}, {
+"args": [Vector2(100, 50), Vector2(300, 300)],
+"method": &"create_zone"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jyiqn"]
+_data = {
+&"test": SubResource("Animation_y6oul")
+}
+
+[node name="HitzonePlayer" type="AnimationPlayer" unique_id=74363884]
+libraries/ = SubResource("AnimationLibrary_jyiqn")
+script = ExtResource("1_y6oul")
