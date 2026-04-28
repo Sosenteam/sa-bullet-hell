@@ -1,6 +1,6 @@
 extends Area2D
 
-@onready var collision_shape = $CollisionShape2D
+@onready var collision_shape = $CollisionPolygon2D
 @onready var draw_shape = $Polygon2D
 
 @export var default_indicator_in = 0.25
@@ -16,9 +16,7 @@ var hold = default_hold
 var fade_out = default_fade_out
 
 
-var enabled = false:
-	set(b):
-		enabled = b
+var enabled = false
 
 func _ready() -> void:
 	var tween = get_tree().create_tween()
@@ -28,9 +26,18 @@ func _ready() -> void:
 	tween.tween_property(draw_shape,"color",Color(0.691, 0.0, 0.261, 0.25),indicator_in)
 	tween.tween_interval(indicator_hold)
 	tween.tween_property(draw_shape,"color",Color(0.691, 0.0, 0.261, 1.0),fade_in)
-	#tween.tween_property(,enabled,true,0)
+	tween.tween_callback(
+		func enable_hitbox():
+			enabled = true
+			set_collision_mask_value(1,true)
+	)
 	tween.tween_interval(hold)
-	#tween.tween_property($".",enabled,true,1)
+	tween.tween_callback(
+		func disable_hitbox():
+			enabled = false
+			set_collision_mask_value(1,false)
+
+	)
 	tween.tween_property(draw_shape,"color",Color(0.691, 0.0, 0.261, 0),fade_out)
 
 	tween.tween_callback(queue_free)
@@ -38,7 +45,6 @@ func _ready() -> void:
 
 func move(x,y,width,height):
 	position = Vector2(x,y)
-	collision_shape.shape.size = Vector2(width,height)
 	var verts: PackedVector2Array = []
 	verts.resize(4)
 	verts[0] = Vector2(x-width,y-height)
@@ -46,8 +52,15 @@ func move(x,y,width,height):
 	verts[2] = Vector2(x+width,y+height)
 	verts[3] = Vector2(x-width,y+height)
 	draw_shape.set_polygon(verts)
+	collision_shape.set_polygon(verts)
 
 func set_fade_time(new_fade_in,new_hold,new_fade_out):
 	fade_in = new_fade_in
 	hold = new_hold
 	fade_out = new_fade_out
+
+
+
+func _on_body_entered(body: Node2D) -> void:
+	if(body.has_method("hit")):
+		body.hit()

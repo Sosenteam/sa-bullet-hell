@@ -6,7 +6,7 @@ extends Node
 @onready var dash_cooldown_timer: Timer = $"../DashTimer/DashCooldown"
 
 @export var player_id = 1 # 1 or 2
-
+@export var player_color: Color = Color.SKY_BLUE
 @export_category("Movement") 
 @export var max_speed = 800
 @export var acceleration_speed = 200
@@ -20,6 +20,7 @@ var dash_direction: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
 	dash_timer.timeout.connect(on_dash_end)
+	rectangle.color = player_color
 
 func _physics_process(delta: float) -> void:
 	#print(dash_cooldown_timer.time_left)
@@ -58,3 +59,10 @@ func dash():
 func on_dash_end():
 	is_dashing = false
 	dash_cooldown_timer.start()
+
+func hit():
+	print("HAHA YOU GOT HIT")
+	var hit_tween = get_parent().create_tween()
+	hit_tween.tween_property(rectangle,"color",Color.WHITE,0.25)
+	hit_tween.tween_interval(0.25)
+	hit_tween.tween_property(rectangle,"color",player_color,0.5)

@@ -78,6 +78,10 @@ player2_dash={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Hitzone"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

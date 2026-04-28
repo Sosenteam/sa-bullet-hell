@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://yjjijai7t87k"]
 
+[ext_resource type="Script" uid="uid://cpxd5oqcubg1j" path="res://player/player.gd" id="1_g1dw6"]
 [ext_resource type="PackedScene" uid="uid://gdxfofjexlwi" path="res://player/character_controller.tscn" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://cd85433mmtjvs" path="res://player/trail.gd" id="2_rkbax"]
 
@@ -15,6 +16,7 @@ colors = PackedColorArray(0.38, 0.6073334, 1, 0, 0.33670002, 0.56601995, 0.91, 0
 radius = 5.0
 
 [node name="Player" type="CharacterBody2D" unique_id=668815064]
+script = ExtResource("1_g1dw6")
 
 [node name="Trail" type="Line2D" parent="." unique_id=939166219]
 width = 12.0
