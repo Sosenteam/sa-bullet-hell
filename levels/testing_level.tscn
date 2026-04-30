@@ -9,4 +9,8 @@ script = ExtResource("1_aklg6")
 
 [node name="HitzonePlayer" parent="." unique_id=74363884 instance=ExtResource("2_e2mvv")]
 
+[node name="Player2" parent="." unique_id=932131140 instance=ExtResource("1_m2onx")]
+player_id = 2
+player_color = Color(1, 0.6515185, 0.6759983, 1)
+
 [node name="Player" parent="." unique_id=668815064 instance=ExtResource("1_m2onx")]

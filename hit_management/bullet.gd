@@ -6,7 +6,7 @@ extends Area2D
 
 var radius = 10
 var velocity: Vector2 = Vector2.ZERO
-
+var on_screen = false
 func _ready() -> void:
 	pass
 
@@ -25,19 +25,19 @@ func draw():
 		verts[i] = position + radius*Vector2.from_angle(angle)
 	draw_shape.set_polygon(verts)
 	collision_shape.set_polygon(verts)
-	vis_notif.rect.size.x = radius
-	vis_notif.rect.size.y = radius
+
 
 func _physics_process(delta: float) -> void:
 	global_position+=velocity*delta
+	var screen_rect = Rect2(Vector2.ZERO, get_viewport_rect().size)
+	if !screen_rect.has_point(global_position):
+		if(on_screen):
+			print(global_position)
+			queue_free()
+		on_screen = false
+	else:
+		on_screen = true
 
 func _on_body_entered(body: Node2D) -> void:
 	if(body.has_method("hit")):
 		body.hit()
-
-
-func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-
-	#get_parent	().print_tree_pretty()
-	#queue_free()
-	pass

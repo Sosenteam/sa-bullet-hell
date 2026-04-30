@@ -16,6 +16,7 @@ colors = PackedColorArray(0.38, 0.6073334, 1, 0, 0.33670002, 0.56601995, 0.91, 0
 radius = 5.0
 
 [node name="Player" type="CharacterBody2D" unique_id=668815064]
+collision_mask = 0
 script = ExtResource("1_g1dw6")
 
 [node name="Trail" type="Line2D" parent="." unique_id=939166219]
