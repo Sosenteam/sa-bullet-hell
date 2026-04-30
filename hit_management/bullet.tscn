@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bkvxauq134djn"]
+
+[ext_resource type="Script" uid="uid://cj0cte2xdg3rk" path="res://hit_management/bullet.gd" id="1_x60x5"]
+
+[node name="Bullet" type="Area2D" unique_id=349246806]
+script = ExtResource("1_x60x5")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1464134240]
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=1598143690]
+color = Color(0.68176764, 1.0444373e-05, 0.46223396, 1)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1232791379]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

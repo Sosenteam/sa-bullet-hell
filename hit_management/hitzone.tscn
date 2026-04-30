@@ -6,8 +6,8 @@
 collision_mask = 0
 script = ExtResource("1_q2420")
 
-[node name="Polygon2D" type="Polygon2D" parent="." unique_id=1423423565]
-
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1039189123]
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=1423423565]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -4,7 +4,7 @@
 
 [sub_resource type="Animation" id="Animation_y6oul"]
 resource_name = "test"
-length = 7.9
+length = 10.066667
 loop_mode = 1
 tracks/0/type = "method"
 tracks/0/imported = false
@@ -13,17 +13,23 @@ tracks/0/path = NodePath("HitzonePlayer")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.23333335, 2.4666667, 5.4333334),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0.03333333, 0.0666666, 3.0333333, 3.3333333, 4.3333335),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "values": [{
+"args": [0.0, 30.0, 150.0, 1000.0, 0.5],
+"method": &"create_horizontal_wipe"
+}, {
+"args": [0.0, 30.0, 100.0, 600.0, 0.5],
+"method": &"create_vertical_wipe"
+}, {
 "args": [500.0, 10.0, -35.0, -100.0, 0.1],
 "method": &"create_vertical_wipe"
 }, {
-"args": [0.0, 50.0, 75.0, 1000.0, 0.35],
-"method": &"create_horizontal_wipe"
+"args": [500.0, 10.0, -35.0, -100.0, 0.1],
+"method": &"create_horizontalwd_wipe"
 }, {
-"args": [0.0, 10.0, 35.0, 800.0, 0.1],
-"method": &"create_vertical_wipe"
+"args": [0.0, 10.0, 10.0, 1000.0, 0.01],
+"method": &"create_horizontal_wipe"
 }]
 }
 

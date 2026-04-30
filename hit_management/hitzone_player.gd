@@ -1,15 +1,23 @@
 extends AnimationPlayer
 
 var hitzone = preload("res://hit_management/hitzone.tscn")
+var bullet = preload("res://hit_management/bullet.tscn")
 
 var current_x
-var current_y
+var current_y # FIX THIS IS SHARED BY SIMULATIOUS ANIMATIONS
+
 
 func create_zone(pos:Vector2,size:Vector2):
 	#print("zone created at ",pos," with size ",size)
 	var zone = hitzone.instantiate()
-	add_child(zone)
+	get_tree().current_scene.add_child(zone)
 	zone.move(pos.x,pos.y,size.x,size.y)
+
+func create_bullet(pos:Vector2,radius:float,vel:Vector2):
+	var bul = bullet.instantiate()
+	
+	get_tree().current_scene.add_child(bul)
+	bul.move(pos,radius,vel)
 
 func create_horizontal_wipe(start_x:float,size_x:float,distance_x:float,end_x:float,time_between:float):
 	current_x = start_x
