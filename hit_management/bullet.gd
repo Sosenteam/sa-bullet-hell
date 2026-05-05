@@ -29,7 +29,7 @@ func draw():
 
 func _physics_process(delta: float) -> void:
 	global_position+=velocity*delta
-	var screen_rect = Rect2(Vector2.ZERO, get_viewport_rect().size)
+	var screen_rect = Rect2(Vector2(-2000,-2000), Vector2(2000,2000))
 	if !screen_rect.has_point(global_position):
 		if(on_screen):
 			print(global_position)

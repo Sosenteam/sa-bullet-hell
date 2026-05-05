@@ -10,11 +10,12 @@ var direction : Vector2 = Vector2.ZERO
 var acceleration: Vector2 = Vector2.ZERO
 var is_dashing: bool = false
 var dash_direction: Vector2 = Vector2.ZERO
-
+var hp = 10
 
 func _ready() -> void:
 	dash_timer.timeout.connect(on_dash_end)
 	rectangle.color = player.player_color
+	Global.update_health(hp,player.player_id)
 
 func _physics_process(delta: float) -> void:
 	#print(dash_cooldown_timer.time_left)
@@ -56,7 +57,12 @@ func on_dash_end():
 
 func hit():
 	print("HAHA YOU GOT HIT")
+	hp -= 1
+	if(hp<0):
+		Global.fail_player(player.player_id)
+	Global.update_health(hp,player.player_id)
 	var hit_tween = get_parent().create_tween()
 	hit_tween.tween_property(rectangle,"color",Color.WHITE,0.25)
 	hit_tween.tween_interval(0.25)
 	hit_tween.tween_property(rectangle,"color",player.player_color,0.5)
+	

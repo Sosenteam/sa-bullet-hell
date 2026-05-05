@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://bdyr0clmpxsvg"]
+
+[ext_resource type="Theme" uid="uid://c26283v0h7bsu" path="res://user_interface/blue_theme.tres" id="1_0tb4o"]
+[ext_resource type="Script" uid="uid://dc0bh80581r6b" path="res://user_interface/ui.gd" id="1_gku6l"]
+[ext_resource type="Theme" uid="uid://dd81xr28p1w6d" path="res://user_interface/red_theme.tres" id="2_37usd"]
+
+[node name="UI" type="Control" unique_id=128712475]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gku6l")
+
+[node name="Bars" type="Control" parent="." unique_id=2132181592]
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 170.0
+
+[node name="BlueHealth" type="ProgressBar" parent="Bars" unique_id=425848287]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 25.0
+offset_right = 268.0
+offset_bottom = 50.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme = ExtResource("1_0tb4o")
+max_value = 10.0
+step = 1.0
+value = 2.0
+show_percentage = false
+
+[node name="RedHealth" type="ProgressBar" parent="Bars" unique_id=1819094969]
+layout_mode = 0
+offset_left = 885.0
+offset_top = 24.0
+offset_right = 1128.0002
+offset_bottom = 49.0
+rotation = 3.1415927
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme = ExtResource("2_37usd")
+max_value = 10.0
+step = 1.0
+value = 2.0
+show_percentage = false
