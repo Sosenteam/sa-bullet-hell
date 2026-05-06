@@ -7,8 +7,9 @@ func disable():
 	set_collision_mask_value(1,false)
 
 func remove():
-	queue_free()
-
+	$Polygon2D.set_polygon([])
+	$CollisionPolygon2D.set_polygon([])
+	
 func set_verts(verts:PackedVector2Array):
 	print("hitshape verts set to ",verts)
 	$Polygon2D.set_polygon(verts)
