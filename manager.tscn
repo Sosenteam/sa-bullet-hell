@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cve5veffvb4ca"]
+
+[ext_resource type="Script" uid="uid://cmx3tpjdngld7" path="res://manager.gd" id="1_453op"]
+
+[node name="Manager" type="Node2D" unique_id=1031654899]
+script = ExtResource("1_453op")
