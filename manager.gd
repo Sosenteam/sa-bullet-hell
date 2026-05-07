@@ -5,11 +5,14 @@ var bullet = preload("res://hit_management/bullet.tscn")
 var hitshape = preload("res://hit_management/hit_shape.tscn")
 
 ## Create a hitzone (position, size)
-func create_zone(pos:Vector2,size:Vector2):
+func create_zone(pos:Vector2,size:Vector2,pre_time=null):
 	#print("zone created at ",pos," with size ",size)
 	var zone = hitzone.instantiate()
+	if(pre_time):
+		zone.indicator_hold = pre_time
 	get_tree().current_scene.add_child(zone)
 	zone.move(pos.x,pos.y,size.x,size.y)
+
 
 ## Create a bullet (position,radius,velocity)
 func create_bullet(pos:Vector2,radius:float,vel:Vector2):
@@ -18,13 +21,13 @@ func create_bullet(pos:Vector2,radius:float,vel:Vector2):
 	get_tree().current_scene.add_child(bul)
 	bul.move(pos,radius,vel)
 ## Create a horizontal wipe of vertical bars (start_x,size_x,distance_x,end_x,time_betwen)
-func create_horizontal_wipe(start_x:float,size_x:float,distance_x:float,end_x:float,time_between:float):	
+func create_horizontal_wipe(start_x:float,size_x:float,distance_x:float,end_x:float,time_between:float,pre_time=null):	
 	var wipe_tween = create_tween()
 	var current_x = [start_x]
 	wipe_tween.set_loops(floor((end_x-start_x)/distance_x))
 	wipe_tween.tween_callback(
 		func zone_create():
-			create_zone(Vector2(current_x[0],0),Vector2(size_x,2000))
+			create_zone(Vector2(current_x[0],0),Vector2(size_x,2000),pre_time)
 	)
 	wipe_tween.tween_interval(time_between)
 	#wipe_tween.tween_property(self,"current_x",1,0).as_relative()
@@ -33,14 +36,14 @@ func create_horizontal_wipe(start_x:float,size_x:float,distance_x:float,end_x:fl
 		#print("Updated local value: ", current_x[0])
 	)
 ## Create a vertical wipe of horizontal bars (start_y,size_y,distance_y,end_y,time_betwen)
-func create_vertical_wipe(start_y:float,size_y:float,distance_y:float,end_y:float,time_between:float):
+func create_vertical_wipe(start_y:float,size_y:float,distance_y:float,end_y:float,time_between:float,pre_time=null):
 	
 	var wipe_tween = create_tween()
 	var current_y = [start_y]
 	wipe_tween.set_loops(floor((end_y-start_y)/distance_y))
 	wipe_tween.tween_callback(
 		func zone_create():
-			create_zone(Vector2(0,current_y[0]),Vector2(2000,size_y))
+			create_zone(Vector2(0,current_y[0]),Vector2(2000,size_y),pre_time)
 	)
 	wipe_tween.tween_interval(time_between)
 	#wipe_tween.tween_property(self,"current_y",1,0).as_relative()

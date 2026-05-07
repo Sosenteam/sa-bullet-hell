@@ -7,6 +7,8 @@ collision_mask = 0
 script = ExtResource("1_8rv4f")
 
 [node name="Polygon2D" type="Polygon2D" parent="." unique_id=182433627]
-color = Color(1, 0.19999999, 0.19999999, 1)
+color = Color(0.06316107, 0.1132201, 0.10798114, 0.3019608)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=991354464]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

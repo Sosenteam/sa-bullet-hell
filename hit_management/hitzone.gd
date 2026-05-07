@@ -20,12 +20,12 @@ var enabled = false
 
 func _ready() -> void:
 	var tween = get_tree().create_tween()
-	draw_shape.color = Color(0.691, 0.0, 0.261, 0)
+	draw_shape.color = Global.invis_color
 	tween.set_trans(Tween.TRANS_EXPO)
 	tween.set_ease(Tween.EASE_IN)
-	tween.tween_property(draw_shape,"color",Color(0.691, 0.0, 0.261, 0.25),indicator_in)
+	tween.tween_property(draw_shape,"color",Global.indicator_color,indicator_in)
 	tween.tween_interval(indicator_hold)
-	tween.tween_property(draw_shape,"color",Color(0.691, 0.0, 0.261, 1.0),fade_in)
+	tween.tween_property(draw_shape,"color",Global.bad_color,fade_in)
 	tween.tween_callback(
 		func enable_hitbox():
 			enabled = true
@@ -38,7 +38,7 @@ func _ready() -> void:
 			set_collision_mask_value(1,false)
 
 	)
-	tween.tween_property(draw_shape,"color",Color(0.691, 0.0, 0.261, 0),fade_out)
+	tween.tween_property(draw_shape,"color",Global.invis_color,fade_out)
 
 	tween.tween_callback(queue_free)
 

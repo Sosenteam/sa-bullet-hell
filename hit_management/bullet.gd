@@ -2,7 +2,7 @@ extends Area2D
 
 @onready var collision_shape = $CollisionPolygon2D
 @onready var draw_shape = $Polygon2D
-@onready var vis_notif = $VisibleOnScreenNotifier2D
+#@onready var vis_notif = $VisibleOnScreenNotifier2D
 
 var radius = 10
 var velocity: Vector2 = Vector2.ZERO
