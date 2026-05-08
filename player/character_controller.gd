@@ -56,6 +56,8 @@ func on_dash_end():
 	dash_cooldown_timer.start()
 
 func hit():
+	if (is_dashing):
+		return
 	print("HAHA YOU GOT HIT")
 	hp -= 1
 	if(hp<0):

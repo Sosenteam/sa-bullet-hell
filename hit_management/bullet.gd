@@ -8,11 +8,12 @@ var radius = 10
 var velocity: Vector2 = Vector2.ZERO
 var on_screen = false
 func _ready() -> void:
-	pass
+	draw_shape.color = Global.bad_color
 
-func move(pos,radius,vel):
+func move(pos,nradius,vel):
 	global_position = pos
 	velocity = vel
+	radius = nradius
 	draw()
 	
 	

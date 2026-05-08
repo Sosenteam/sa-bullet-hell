@@ -17,6 +17,8 @@ func disable():
 func remove():
 	polygon.set_polygon([])
 	collision_polygon.set_polygon([])
+	scale = Vector2(1,1)
+	rotation = 0
 	
 func set_verts(verts:PackedVector2Array):
 	#print("hitshape verts set to ",verts)
