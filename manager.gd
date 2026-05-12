@@ -20,6 +20,13 @@ func create_bullet(pos:Vector2,radius:float,vel:Vector2):
 	
 	get_tree().current_scene.add_child(bul)
 	bul.move(pos,radius,vel)
+	
+func create_bullet_circle(pos:Vector2,speed:float,resolution:int,radius:float):
+	var ang 
+	for b in resolution:
+		ang = remap(b,0,resolution,0,TAU)
+		create_bullet(pos,radius,Vector2.from_angle(ang)*speed)
+
 ## Create a horizontal wipe of vertical bars (start_x,size_x,distance_x,end_x,time_betwen)
 func create_horizontal_wipe(start_x:float,size_x:float,distance_x:float,end_x:float,time_between:float,pre_time=null):	
 	var wipe_tween = create_tween()

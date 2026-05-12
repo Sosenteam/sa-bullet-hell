@@ -32,6 +32,10 @@ func play():
 		shapes.append(manager.create_shape())
 	
 	var level = get_parent().create_tween()
+	level.tween_callback(manager.create_bullet_circle.bind(Vector2(200,200),200,20,10))
+	level.tween_callback(manager.create_bullet_circle.bind(Vector2(800,300),200,20,10))
+	level.tween_callback(manager.create_bullet_circle.bind(Vector2(500,500),200,20,10))
+
 	level.tween_interval(1)
 	level.tween_callback(manager.create_horizontal_wipe.bind(0,100,75,Global.center.x-100,1))
 	level.tween_callback(manager.create_horizontal_wipe.bind(Global.center.x,100,-75,0,1))
@@ -73,7 +77,7 @@ func play():
 	level.parallel().tween_callback(manager.create_cannon.bind(Vector2(Global.center.x/2,0),PI/2,0.2,5,150,10))
 	level.tween_callback(manager.create_cannon.bind(Vector2(Global.center.x/2,Global.center.y),-PI/2,0.2,5,150,10))
 	level.tween_property(shapes[0],'position',Vector2.ZERO,7).set_trans(Tween.TRANS_CUBIC)
-	level.tween_interval(8)
+	level.tween_interval(2)
 	level.tween_callback(shapes[0].remove)
 	# HELL TIME
 	for pos in corners_and_centers:

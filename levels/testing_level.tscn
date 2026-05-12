@@ -20,7 +20,9 @@ grow_horizontal = 1
 grow_vertical = 1
 
 [node name="Player2" parent="." unique_id=932131140 instance=ExtResource("1_m2onx")]
+position = Vector2(635, 314)
 player_id = 2
 player_color = Color(1, 0.6515185, 0.6759983, 1)
 
 [node name="Player" parent="." unique_id=668815064 instance=ExtResource("1_m2onx")]
+position = Vector2(635, 314)
