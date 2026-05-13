@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://dtpgt3tyoqbl1"]
+
+[ext_resource type="Script" uid="uid://drbg3os8fh5ni" path="res://levels/testing_level.gd" id="1_5mrsh"]
+[ext_resource type="PackedScene" uid="uid://cve5veffvb4ca" path="res://manager.tscn" id="2_safpt"]
+[ext_resource type="PackedScene" uid="uid://bdyr0clmpxsvg" path="res://user_interface/ui.tscn" id="3_gjl0y"]
+[ext_resource type="PackedScene" uid="uid://yjjijai7t87k" path="res://player/player.tscn" id="4_vnv7o"]
+
+[node name="Level" type="Node2D" unique_id=1026716177]
+script = ExtResource("1_5mrsh")
+
+[node name="Manager" parent="." unique_id=1031654899 instance=ExtResource("2_safpt")]
+
+[node name="UI" parent="." unique_id=128712475 instance=ExtResource("3_gjl0y")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 8.0
+offset_bottom = 23.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Player2" parent="." unique_id=932131140 instance=ExtResource("4_vnv7o")]
+position = Vector2(635, 314)
+player_id = 2
+player_color = Color(1, 0.6515185, 0.6759983, 1)
+
+[node name="Player" parent="." unique_id=668815064 instance=ExtResource("4_vnv7o")]
+position = Vector2(635, 314)
