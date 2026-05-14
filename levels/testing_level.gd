@@ -22,8 +22,8 @@ func _ready() -> void:
 	shapes = []
 	for i in 5:
 		shapes.append(manager.create_shape())
-	level_one()
-	
+	#level_one()
+	test_level()
 
 
 func _physics_process(delta: float) -> void:
