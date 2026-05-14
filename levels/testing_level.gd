@@ -16,6 +16,8 @@ var shapes: Array[Node2D] = []
 
 
 func _ready() -> void:
+	$Edges/Right.shape.distance = -Global.screen_size.x
+	$Edges/Bottom.shape.distance = -Global.screen_size.y
 	print("played level")
 	shapes = []
 	for i in 5:
