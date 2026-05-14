@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var manager = $Manager
+@onready var music_player = $MusicPlayer
 
 var shapes: Array[Node2D] = [] 
 @onready var corners_and_centers = [
