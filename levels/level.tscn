@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cve5veffvb4ca" path="res://manager.tscn" id="2_safpt"]
 [ext_resource type="PackedScene" uid="uid://bdyr0clmpxsvg" path="res://user_interface/ui.tscn" id="3_gjl0y"]
 [ext_resource type="PackedScene" uid="uid://yjjijai7t87k" path="res://player/player.tscn" id="4_vnv7o"]
-[ext_resource type="AudioStream" uid="uid://caa234djxmkko" path="res://music/alec-singer!.wav" id="5_safpt"]
+[ext_resource type="AudioStream" uid="uid://cqq6j1enomkq2" path="res://music/alec-singer!2.wav" id="5_safpt"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5mrsh"]
 normal = Vector2(1, 0)

@@ -24,8 +24,8 @@ func _ready() -> void:
 	for i in 5:
 		shapes.append(manager.create_shape())
 	#level_one()
-	test_level()
-
+	#test_level()
+	level_alec()
 
 func _physics_process(delta: float) -> void:
 	#$HitzonePlayer.creaate_bullet(Vector2(1000,randf_range(0,600)),10,200*Vector2.from_angle(randf_range(4*PI/6,8*PI/6)))
@@ -138,3 +138,20 @@ func level_one():
 	level.set_parallel(false)
 	level.tween_callback(manager.create_horizontal_wipe.bind(0,10,60,Global.center.x,0.04,1))
 	level.tween_callback(manager.create_vertical_wipe.bind(0,10,60,Global.center.y,0.04,1))
+	
+func level_alec():
+	music_player.play()
+	var level = get_parent().create_tween()
+	level.set_parallel(true)
+	level.tween_callback(manager.create_zone.bind(Vector2(100,100),Vector2(130,130))).set_delay(1.99)
+	level.tween_callback(manager.create_zone.bind(Vector2(300,300),Vector2(130,130))).set_delay(2.510)
+	level.tween_callback(manager.create_zone.bind(Vector2(500,100),Vector2(130,130))).set_delay(2.84)
+	level.tween_callback(manager.create_horizontal_wipe.bind(0,10,60,Global.center.x,0.001,1)).set_delay(4.421)
+	level.chain().tween_callback(manager.create_vertical_wipe.bind(0,10,60,Global.center.y,0.001,1))
+	for pos in corners_and_centers:
+		var angle_to_center = pos.angle_to_point(Global.center / 2)
+		level.tween_callback(manager.create_cannon.bind(pos, angle_to_center, 0.5, 8, 150,10)).set_delay(3.266)
+	level.tween_callback(manager.create_zone.bind(Global.center/4,Global.screen_size/4,1)).set_delay(17.97)
+	level.tween_callback(manager.create_zone.bind(Global.center/4+Vector2(0,Global.center.y/2),Global.screen_size/4,1)).set_delay(18.97)
+	level.tween_callback(manager.create_zone.bind((3*Global.center)/4,Global.screen_size/4,1)).set_delay(19.97)
+	level.tween_callback(manager.create_zone.bind(Global.center/4+Vector2(Global.center.x/2,0),Global.screen_size/4,1)).set_delay(20.97)
