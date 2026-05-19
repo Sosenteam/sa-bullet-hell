@@ -95,6 +95,8 @@ func start_level(idx):
 		get_tree().paused = false
 		if Global.has_method("start_selected_level"):
 			Global.start_selected_level(levels[idx])
+			if Global.num_players == 1:
+				red_health.hide()
 	)
 
 func _input(event):

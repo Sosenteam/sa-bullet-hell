@@ -60,7 +60,7 @@ func hit():
 		return
 	print("HAHA YOU GOT HIT")
 	hp -= 1
-	if(hp<0):
+	if(hp<1):
 		Global.fail_player(player.player_id)
 	Global.update_health(hp,player.player_id)
 	var hit_tween = get_parent().create_tween()

@@ -3,6 +3,8 @@ extends Node2D
 @onready var manager = $Manager
 @onready var music_player = $MusicPlayer
 
+
+
 var shapes: Array[Node2D] = [] 
 @onready var corners_and_centers = [
 	Vector2(0, 0),
@@ -17,6 +19,8 @@ var shapes: Array[Node2D] = []
 
 
 func _ready() -> void:
+	Global.blue_player=$Player
+	Global.red_player=$Player2
 	$Edges/Right.shape.distance = -Global.screen_size.x
 	$Edges/Bottom.shape.distance = -Global.screen_size.y
 	print("played level")

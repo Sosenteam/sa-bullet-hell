@@ -561,18 +561,7 @@ cache/0/16/0/glyphs/134217736/size = Vector2(16, 14)
 cache/0/16/0/glyphs/134217736/uv_rect = Rect2(166, 68, 16, 14)
 cache/0/16/0/glyphs/134217736/texture_idx = 0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_37usd"]
-content_margin_left = 2.0
-content_margin_top = 2.0
-content_margin_right = 2.0
-content_margin_bottom = 2.0
-bg_color = Color(1, 0.6509804, 0.6745098, 1)
-draw_center = false
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-corner_detail = 6
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mdyis"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gku6l"]
 content_margin_left = 2.0
@@ -580,10 +569,10 @@ content_margin_top = 2.0
 content_margin_right = 2.0
 content_margin_bottom = 2.0
 bg_color = Color(0.5294118, 0.80784315, 0.92156863, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 2
 corner_detail = 6
 
 [resource]
@@ -592,5 +581,5 @@ ProgressBar/colors/font_outline_color = Color(0, 0, 0, 1)
 ProgressBar/constants/outline_size = 0
 ProgressBar/font_sizes/font_size = 16
 ProgressBar/fonts/font = SubResource("FontFile_0tb4o")
-ProgressBar/styles/background = SubResource("StyleBoxFlat_37usd")
+ProgressBar/styles/background = SubResource("StyleBoxEmpty_mdyis")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_gku6l")

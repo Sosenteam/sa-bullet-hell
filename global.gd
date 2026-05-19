@@ -2,6 +2,8 @@ extends Node
 
 @onready var screen_size = get_viewport().get_visible_rect().size
 @onready var center = screen_size/2
+@onready var red_player
+@onready var blue_player
 var levels = []
 
 
@@ -35,6 +37,9 @@ func start_selected_level(level_class):
 	var music_player = null
 	if level_node.get("music_player") != null:
 		music_player = level_node.music_player
+	if num_players == 1:
+		red_player.queue_free()
+	
 	
 	current_level_instance = level_class.new(manager, shapes, music_player)
 	
