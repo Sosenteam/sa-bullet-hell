@@ -4,7 +4,6 @@ extends Node
 var manager: Node
 var shapes: Array[Node2D]
 var music_player: Node
-
 var level_name: String = "Base Level"
 var difficulty: String = "1/5"
 

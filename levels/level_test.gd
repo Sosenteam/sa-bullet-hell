@@ -31,7 +31,6 @@ func play(level_node: Node):
 	level.tween_callback(shapes[1].set_rotation.bind(PI/2))
 	level.tween_property(shapes[0],"scale",Vector2(1,1),1).set_trans(Tween.TRANS_QUART)
 	level.parallel().tween_property(shapes[1],"scale",Vector2(1,1),1).set_trans(Tween.TRANS_QUART)
-	level.parallel().tween_property(shapes[1],"scale",Vector2(1,1),1).set_trans(Tween.TRANS_QUART)
 	level.tween_callback(shapes[0].enable)
 	level.tween_callback(shapes[1].enable)
 	level.tween_property(shapes[0],"rotation",10,15).set_trans(Tween.TRANS_LINEAR)
