@@ -4,6 +4,7 @@ var hitzone = preload("res://hit_management/hitzone.tscn")
 var bullet = preload("res://hit_management/bullet.tscn")
 var hitshape = preload("res://hit_management/hit_shape.tscn")
 
+
 ## Create a hitzone (position, size)
 func create_zone(pos:Vector2,size:Vector2,pre_time=null):
 	#print("zone created at ",pos," with size ",size)

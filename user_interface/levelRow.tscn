@@ -1,0 +1,148 @@
+[gd_scene format=3 uid="uid://cyuq8lj2e0aqb"]
+
+[ext_resource type="Script" uid="uid://00gfxgskkqgq" path="res://user_interface/level_row.gd" id="1_p2db2"]
+[ext_resource type="FontFile" uid="uid://bviql04i13k5u" path="res://user_interface/Geo-Regular.ttf" id="1_p3h26"]
+[ext_resource type="StyleBox" uid="uid://c2s2l0e4p3q7" path="res://user_interface/empty_style.tres" id="3_empty"]
+[ext_resource type="StyleBox" uid="uid://d3a4b5c6d7e8" path="res://user_interface/focus_style.tres" id="4_focus"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6opce"]
+bg_color = Color(0.16206557, 0.1620656, 0.16206548, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p3h26"]
+bg_color = Color(0, 0, 0, 0.32941177)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_p2db2"]
+color = Color(0, 0, 0, 0.44313726)
+thickness = 30
+
+[node name="levelRow" type="Control" unique_id=1613077528]
+custom_minimum_size = Vector2(416, 64)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(208, 32)
+script = ExtResource("1_p2db2")
+
+[node name="Panel" type="Panel" parent="." unique_id=2120908512]
+layout_mode = 1
+anchors_preset = -1
+offset_right = 260.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5999999, 1.6063517)
+theme_override_styles/panel = SubResource("StyleBoxFlat_6opce")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=917230496]
+layout_mode = 0
+offset_right = 260.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Panel" type="Panel" parent="Panel/MarginContainer" unique_id=627933978]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_p3h26")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer" unique_id=1969652848]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/MarginContainer" unique_id=1832787663]
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="Row" type="Label" parent="Panel/MarginContainer/MarginContainer/HBoxContainer" unique_id=574759049]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_p3h26")
+theme_override_font_sizes/font_size = 25
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/MarginContainer/HBoxContainer" unique_id=81918077]
+layout_mode = 2
+theme_override_constants/margin_top = 1
+
+[node name="VSeparator" type="VSeparator" parent="Panel/MarginContainer/MarginContainer/HBoxContainer/MarginContainer" unique_id=1969853652]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_p2db2")
+
+[node name="Level Name" type="Label" parent="Panel/MarginContainer/MarginContainer/HBoxContainer" unique_id=1959555543]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_p3h26")
+theme_override_font_sizes/font_size = 18
+text = "Alec's Level <3"
+
+[node name="VSeparator" type="VSeparator" parent="Panel" unique_id=1440914950]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.749954
+offset_top = -15.6423
+offset_right = 163.25006
+offset_bottom = 15.3577
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_p2db2")
+
+[node name="VSeparator" type="VSeparator" parent="Panel/VSeparator" unique_id=467085526]
+layout_mode = 0
+offset_left = 49.0
+offset_right = 301.0
+offset_bottom = 31.0
+theme_override_styles/separator = SubResource("StyleBoxLine_p2db2")
+
+[node name="Time" type="Label" parent="Panel/VSeparator" unique_id=165457161]
+layout_mode = 0
+offset_left = 129.0
+offset_top = -1.0
+offset_right = 172.0
+offset_bottom = 29.0
+theme_override_fonts/font = ExtResource("1_p3h26")
+theme_override_font_sizes/font_size = 22
+text = "1:24"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Difficulty" type="Label" parent="Panel/VSeparator" unique_id=418950248]
+layout_mode = 0
+offset_left = 174.0
+offset_top = -1.0
+offset_right = 217.0
+offset_bottom = 29.0
+theme_override_fonts/font = ExtResource("1_p3h26")
+theme_override_font_sizes/font_size = 22
+text = "1/5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="." unique_id=987654321]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.009375
+anchor_top = -0.0027777778
+anchor_right = 0.21875
+anchor_bottom = 0.06574074
+offset_left = -18.0
+offset_top = 3.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = ExtResource("3_empty")
+theme_override_styles/pressed = ExtResource("4_focus")
+theme_override_styles/hover = ExtResource("4_focus")
+theme_override_styles/focus = ExtResource("4_focus")
+metadata/_edit_use_anchors_ = true
+
+[connection signal="focus_entered" from="Button" to="." method="_on_button_focus_entered"]
+[connection signal="focus_exited" from="Button" to="." method="_on_button_focus_exited"]

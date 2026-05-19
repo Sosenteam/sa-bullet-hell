@@ -11,7 +11,7 @@ normal = Vector2(1, 0)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_safpt"]
 normal = Vector2(-1, 0)
-distance = -1152.0
+distance = -1554.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_gjl0y"]
 distance = -648.0
@@ -24,18 +24,13 @@ stream_0 = ExtResource("5_safpt")
 script = ExtResource("1_5mrsh")
 
 [node name="Manager" parent="." unique_id=1031654899 instance=ExtResource("2_safpt")]
+position = Vector2(-1, 1)
 
 [node name="UI" parent="." unique_id=128712475 instance=ExtResource("3_gjl0y")]
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_right = 8.0
-offset_bottom = 23.0
-grow_horizontal = 1
-grow_vertical = 1
+follow_viewport_scale = 2.0
 
 [node name="Player2" parent="." unique_id=932131140 instance=ExtResource("4_vnv7o")]
-position = Vector2(635, 314)
+position = Vector2(635, 318)
 player_id = 2
 player_color = Color(1, 0.6515185, 0.6759983, 1)
 
@@ -54,6 +49,7 @@ rotation = 1.5707964
 shape = SubResource("WorldBoundaryShape2D_5mrsh")
 
 [node name="Right" type="CollisionShape2D" parent="Edges" unique_id=1445393039]
+position = Vector2(-1, 1)
 shape = SubResource("WorldBoundaryShape2D_safpt")
 
 [node name="Bottom" type="CollisionShape2D" parent="Edges" unique_id=488215860]

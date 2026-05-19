@@ -3,27 +3,47 @@
 [ext_resource type="Theme" uid="uid://c26283v0h7bsu" path="res://user_interface/blue_theme.tres" id="1_0tb4o"]
 [ext_resource type="Script" uid="uid://dc0bh80581r6b" path="res://user_interface/ui.gd" id="1_gku6l"]
 [ext_resource type="Theme" uid="uid://dd81xr28p1w6d" path="res://user_interface/red_theme.tres" id="2_37usd"]
+[ext_resource type="FontFile" uid="uid://bviql04i13k5u" path="res://user_interface/Geo-Regular.ttf" id="4_v6or6"]
+[ext_resource type="Theme" uid="uid://b7hncqjkuf4nr" path="res://user_interface/button_theme.tres" id="5_cer50"]
+[ext_resource type="Texture2D" uid="uid://bsj2mijc1wxkp" path="res://user_interface/swap.png" id="6_q8uhf"]
 
-[node name="UI" type="Control" unique_id=128712475]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v6or6"]
+bg_color = Color(0.16206557, 0.1620656, 0.16206548, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cer50"]
+bg_color = Color(0, 0, 0, 0.32941177)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_q8uhf"]
+color = Color(0, 0, 0, 0.44313726)
+thickness = 30
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=354247462]
+
+[node name="UI" type="Control" parent="." unique_id=128712475]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -768.0
+offset_bottom = -432.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
 script = ExtResource("1_gku6l")
 
-[node name="Bars" type="Control" parent="." unique_id=2132181592]
+[node name="Bars" type="Control" parent="UI" unique_id=2132181592]
 anchors_preset = 0
+offset_top = 2.0
 offset_right = 1152.0
-offset_bottom = 170.0
+offset_bottom = 650.0
+metadata/_edit_use_anchors_ = true
 
-[node name="BlueHealth" type="ProgressBar" parent="Bars" unique_id=425848287]
-layout_mode = 0
+[node name="BlueHealth" type="ProgressBar" parent="UI/Bars" unique_id=425848287]
+layout_mode = 1
 offset_left = 25.0
-offset_top = 25.0
+offset_top = 39.0
 offset_right = 268.0
-offset_bottom = 50.0
+offset_bottom = 64.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme = ExtResource("1_0tb4o")
 max_value = 10.0
@@ -31,12 +51,27 @@ step = 1.0
 value = 2.0
 show_percentage = false
 
-[node name="RedHealth" type="ProgressBar" parent="Bars" unique_id=1819094969]
+[node name="Health" type="Label" parent="UI/Bars/BlueHealth" unique_id=1015762320]
 layout_mode = 0
-offset_left = 885.0
-offset_top = 24.0
-offset_right = 1128.0002
-offset_bottom = 49.0
+offset_left = 6.0
+offset_top = -3.0
+offset_right = 52.0
+offset_bottom = 27.0
+theme = ExtResource("5_cer50")
+theme_override_colors/font_color = Color(0.029527824, 0.12424237, 0.15947726, 1)
+theme_override_font_sizes/font_size = 26
+text = "100"
+
+[node name="RedHealth" type="ProgressBar" parent="UI/Bars" unique_id=1819094969]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -270.0
+offset_top = 39.0
+offset_right = -26.999756
+offset_bottom = 64.0
+grow_horizontal = 0
 rotation = 3.1415927
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme = ExtResource("2_37usd")
@@ -44,3 +79,295 @@ max_value = 10.0
 step = 1.0
 value = 2.0
 show_percentage = false
+
+[node name="Health" type="Label" parent="UI/Bars/RedHealth" unique_id=669858879]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 50.000248
+offset_top = 15.500011
+offset_right = 96.000244
+offset_bottom = 45.500015
+grow_vertical = 2
+rotation = 3.1415927
+theme = ExtResource("5_cer50")
+theme_override_colors/font_color = Color(0.38446176, 0, 0.10792325, 1)
+theme_override_font_sizes/font_size = 26
+text = "100"
+horizontal_alignment = 2
+
+[node name="StartScreen" type="ColorRect" parent="UI" unique_id=1023543563]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.047058824, 0.047058824, 0.08235294, 1)
+
+[node name="Title" type="Label" parent="UI/StartScreen" unique_id=1771886848]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -448.0
+offset_top = 90.0
+offset_right = 477.0
+offset_bottom = 254.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.9127187, 0, 0, 0.6)
+theme_override_constants/shadow_offset_x = 8
+theme_override_constants/shadow_offset_y = 8
+theme_override_fonts/font = ExtResource("4_v6or6")
+theme_override_font_sizes/font_size = 100
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BULLET" type="Label" parent="UI/StartScreen/Title" unique_id=791168097]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -462.5
+offset_right = 462.5
+offset_bottom = 164.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.27283138, 0.42918682, 0.4931439, 1)
+theme_override_constants/shadow_offset_x = 8
+theme_override_constants/shadow_offset_y = 8
+theme_override_fonts/font = ExtResource("4_v6or6")
+theme_override_font_sizes/font_size = 100
+text = "BULLET             "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HELL" type="Label" parent="UI/StartScreen/Title" unique_id=445690962]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -462.5
+offset_right = 462.5
+offset_bottom = 164.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.5370987, 0.34107694, 0.35461265, 1)
+theme_override_constants/shadow_offset_x = 8
+theme_override_constants/shadow_offset_y = 8
+theme_override_fonts/font = ExtResource("4_v6or6")
+theme_override_font_sizes/font_size = 100
+text = "              HELL"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelRows" type="VBoxContainer" parent="UI/StartScreen" unique_id=379505638]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -210.0
+offset_top = -80.0
+offset_right = 212.0
+offset_bottom = 237.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="PlayerModeBtn" type="Button" parent="UI/StartScreen" unique_id=549604942]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -49.0
+offset_top = -289.0
+offset_right = 52.0
+offset_bottom = -185.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_cer50")
+theme_override_font_sizes/font_size = 24
+icon_alignment = 1
+expand_icon = true
+
+[node name="OtherIcon" type="Button" parent="UI/StartScreen/PlayerModeBtn" unique_id=1988302041]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 22.5
+offset_top = 21.0
+offset_right = 74.5
+offset_bottom = 74.544556
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_cer50")
+theme_override_font_sizes/font_size = 24
+icon_alignment = 1
+expand_icon = true
+
+[node name="Swap" type="Sprite2D" parent="UI/StartScreen/PlayerModeBtn/OtherIcon" unique_id=1550870209]
+position = Vector2(8, 7)
+scale = Vector2(3.6958346, 3.6958346)
+texture = ExtResource("6_q8uhf")
+
+[node name="Title Board" type="Panel" parent="UI/StartScreen" unique_id=991985159]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -209.0
+offset_top = -153.0
+offset_right = 51.0
+offset_bottom = -113.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5999999, 1.6063517)
+theme_override_styles/panel = SubResource("StyleBoxFlat_v6or6")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/StartScreen/Title Board" unique_id=1160422913]
+layout_mode = 0
+offset_right = 260.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Panel" type="Panel" parent="UI/StartScreen/Title Board/MarginContainer" unique_id=438329335]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cer50")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/StartScreen/Title Board/MarginContainer" unique_id=1600610621]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/StartScreen/Title Board/MarginContainer/MarginContainer" unique_id=1514340771]
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="Row" type="Label" parent="UI/StartScreen/Title Board/MarginContainer/MarginContainer/HBoxContainer" unique_id=1289614715]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("4_v6or6")
+theme_override_font_sizes/font_size = 25
+text = "#"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/StartScreen/Title Board/MarginContainer/MarginContainer/HBoxContainer" unique_id=1931326590]
+layout_mode = 2
+theme_override_constants/margin_top = 1
+
+[node name="VSeparator" type="VSeparator" parent="UI/StartScreen/Title Board/MarginContainer/MarginContainer/HBoxContainer/MarginContainer" unique_id=1914752788]
+layout_mode = 2
+theme_override_constants/separation = 8
+theme_override_styles/separator = SubResource("StyleBoxLine_q8uhf")
+
+[node name="Level Name" type="Label" parent="UI/StartScreen/Title Board/MarginContainer/MarginContainer/HBoxContainer" unique_id=855976053]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_v6or6")
+theme_override_font_sizes/font_size = 18
+text = "Level Name"
+
+[node name="VSeparator" type="VSeparator" parent="UI/StartScreen/Title Board" unique_id=1229114262]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 5.0
+offset_right = 293.0
+offset_bottom = 36.0
+theme_override_styles/separator = SubResource("StyleBoxLine_q8uhf")
+
+[node name="VSeparator" type="VSeparator" parent="UI/StartScreen/Title Board/VSeparator" unique_id=160144946]
+layout_mode = 0
+offset_left = 49.0
+offset_right = 301.0
+offset_bottom = 31.0
+theme_override_styles/separator = SubResource("StyleBoxLine_q8uhf")
+
+[node name="Time" type="Label" parent="UI/StartScreen/Title Board/VSeparator" unique_id=616827736]
+layout_mode = 0
+offset_left = 129.0
+offset_top = -1.0
+offset_right = 172.0
+offset_bottom = 29.0
+theme_override_fonts/font = ExtResource("4_v6or6")
+theme_override_font_sizes/font_size = 22
+text = "Time"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Difficulty" type="Label" parent="UI/StartScreen/Title Board/VSeparator" unique_id=1454589359]
+layout_mode = 0
+offset_left = 174.0
+offset_top = -1.2648236
+offset_right = 217.0
+offset_bottom = 28.735176
+theme_override_fonts/font = ExtResource("4_v6or6")
+theme_override_font_sizes/font_size = 22
+text = "Dif"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DeathScreen" type="ColorRect" parent="UI" unique_id=452189708]
+process_mode = 3
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.38039216)
+
+[node name="Timer" type="Timer" parent="UI/DeathScreen" unique_id=286819341]
+process_mode = 3
+wait_time = 3.0
+one_shot = true
+
+[node name="DeathScreen" type="ColorRect" parent="UI/DeathScreen" unique_id=1539238178]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -522.2662
+offset_top = -301.5329
+offset_right = 964.8921
+offset_bottom = 543.36975
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.67999893, 0.67999893)
+color = Color(1, 1, 1, 0.38039216)
+
+[node name="DeathText" type="Label" parent="UI/DeathScreen/DeathScreen" unique_id=1427932059]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -450.93176
+offset_top = -244.50983
+offset_right = 450.93176
+offset_bottom = 244.5098
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_v6or6")
+theme_override_font_sizes/font_size = 64
+text = "sdasd"
+horizontal_alignment = 1
+vertical_alignment = 1
