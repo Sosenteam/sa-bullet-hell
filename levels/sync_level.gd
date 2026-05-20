@@ -2,8 +2,8 @@ class_name SyncLevel extends Node
 
 var manager: Node
 var shapes: Array[Node2D]
-var music_player: Node
-var level_name: String = "Base Level"
+var music_player: AudioStreamPlayer
+var level_name: String = "Sync Level"
 var difficulty: String = "1/5"
 
 var music: AudioStream = null
@@ -22,14 +22,11 @@ var length: String:
 		
 var output_latency:float
 
-@onready var timeline: Array[Dictionary] = [
-	{
-	"t": 0.2,
-	"a":func(a):
-	print("hi")
-	print("hi2")
-	}
-]
+var timeline: Array[Dictionary]
+
+
+
+
 
 var current_event_index: int = 0
 
@@ -38,20 +35,25 @@ func _init(mgr: Node = null, shps: Array[Node2D] = [], mp: Node = null):
 	shapes = shps
 	music_player = mp
 
-func play():
+func play(level_node: Node):
 	current_event_index = 0
 	timeline.sort_custom(func(a, b): return a.t < b.t) # Ensure sorted by time
-	music.play()
+	music_player.play()
 	output_latency = AudioServer.get_output_latency()
+	music_player.finished.connect(end)
 
 func _process(_delta):
-	if not music.playing:
+	#print("proc	essing")
+	if not music_player.playing:
+		print("no music")
 		return
 		
-	var current_time = music.get_playback_position()
-	var exact_time = music.get_playback_position() + AudioServer.get_time_since_last_mix() - output_latency
+	var current_time = music_player.get_playback_position()
+	var exact_time = music_player.get_playback_position() + AudioServer.get_time_since_last_mix() - output_latency
 	
 	# Trigger all events that are due
-	while current_event_index < timeline.size() and current_time >= timeline[current_event_index].time:
+	while current_event_index < timeline.size() and exact_time  >= timeline[current_event_index]["t"]:
 		timeline[current_event_index].a.call()
 		current_event_index += 1
+func end():
+	queue_free()
