@@ -21,9 +21,16 @@ Global="*uid://be68futi7tjqa"
 
 [display]
 
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 window/size/mode=2
+window/size/borderless=true
+window/size/transparent=true
 window/stretch/mode="viewport"
-window/stretch/scale=0.75
+
+[gui]
+
+theme/default_font_multichannel_signed_distance_field=true
 
 [input]
 
@@ -91,6 +98,7 @@ player2_dash={
 [layer_names]
 
 2d_physics/layer_1="Hitzone"
+2d_physics/layer_4="Player"
 
 [physics]
 
@@ -101,3 +109,4 @@ player2_dash={
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.048321106, 0.04831682, 0.08085174, 1)

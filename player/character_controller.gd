@@ -10,7 +10,7 @@ var direction : Vector2 = Vector2.ZERO
 var acceleration: Vector2 = Vector2.ZERO
 var is_dashing: bool = false
 var dash_direction: Vector2 = Vector2.ZERO
-var hp = 10
+@export var hp = 10
 
 func _ready() -> void:
 	dash_timer.timeout.connect(on_dash_end)
@@ -23,7 +23,7 @@ func _physics_process(delta: float) -> void:
 		player.velocity*=0.7
 		acceleration = direction*player.acceleration_speed
 		player.velocity+=acceleration
-		player.velocity = player.velocity.limit_length(player.max_speed)
+		player.velocity = player.velocity.limit_length(player.current_max_speed)
 	else:
 		player.velocity = dash_direction*player.dash_speed
 	#print(player.velocity)
@@ -32,6 +32,17 @@ func _physics_process(delta: float) -> void:
 	if(direction != Vector2(0,0)):
 		rectangle.rotation = direction.angle()
 	player.move_and_slide()
+	for i in range(player.get_slide_collision_count()):
+		var collision = player.get_slide_collision(i)
+		var collider = collision.get_collider()
+		if collider.is_in_group("player"):
+			if (collider.is_ghost):
+				collider.be_ghost(false)
+			elif (collider.is_ghost):
+				player.be_ghost(false)
+			
+			
+			
 
 func _unhandled_input(event: InputEvent) -> void:
 	#print(event.as_text())
@@ -59,9 +70,11 @@ func hit():
 	if (is_dashing):
 		return
 	print("HAHA YOU GOT HIT")
-	hp -= 1
+	if (player.is_ghost == false):
+		hp -= 1
 	if(hp<1):
-		Global.fail_player(player.player_id)
+		Global.fail_player(player.player_id, player)
+			
 	Global.update_health(hp,player.player_id)
 	var hit_tween = get_parent().create_tween()
 	hit_tween.tween_property(rectangle,"color",Color.WHITE,0.25)
