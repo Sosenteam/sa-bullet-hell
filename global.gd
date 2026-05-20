@@ -42,8 +42,8 @@ func start_selected_level(level_class):
 	
 	
 	current_level_instance = level_class.new(manager, shapes, music_player)
-	
+	level_node.add_child(current_level_instance)
 	if current_level_instance.music and music_player:
 		music_player.stream = current_level_instance.music
-		
+	
 	current_level_instance.play(level_node)
