@@ -16,7 +16,7 @@ var icon_2p = preload("res://user_interface/2-player.png")
 @onready var level_row_scene = preload("res://user_interface/levelRow.tscn")
 
 var current_level_idx = 0
-var levels = [LevelOne,LevelTwo]
+var levels = [LevelOne,LevelTwo,LevelThree]
 
 func _ready() -> void:
 	Global.ui = self
