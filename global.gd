@@ -15,15 +15,17 @@ var ui:Node
 func update_health(hp,plid):
 	ui.update_health(hp,plid)
 
-func fail_player(plid):
+func fail_player(plid, player):
+	player.be_ghost(true)
 	if(plid == 1):
 		print("RED WINS")
-		if ui:
-			ui.show_death_screen("RED WINS!")
+		
+		#if ui:
+			#ui.show_death_screen("RED WINS!")
 	if(plid == 2):
 		print("BLUE WINS")
-		if ui:
-			ui.show_death_screen("BLUE WINS!")
+		#if ui:
+			#ui.show_death_screen("BLUE WINS!")
 
 var current_level_instance
 var num_players = 2

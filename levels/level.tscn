@@ -23,6 +23,19 @@ stream_0 = ExtResource("5_safpt")
 [node name="Level" type="Node2D" unique_id=1026716177]
 script = ExtResource("1_5mrsh")
 
+[node name="StartScreen" type="ColorRect" parent="." unique_id=1728128079]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -163.0
+offset_top = -119.0
+offset_right = 2116.0
+offset_bottom = 1265.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.047058824, 0.047058824, 0.08235294, 1)
+
 [node name="Manager" parent="." unique_id=1031654899 instance=ExtResource("2_safpt")]
 position = Vector2(-1, 1)
 
@@ -30,12 +43,12 @@ position = Vector2(-1, 1)
 follow_viewport_scale = 2.0
 
 [node name="Player2" parent="." unique_id=932131140 instance=ExtResource("4_vnv7o")]
-position = Vector2(635, 318)
+position = Vector2(1180, 314)
 player_id = 2
 player_color = Color(1, 0.6515185, 0.6759983, 1)
 
 [node name="Player" parent="." unique_id=668815064 instance=ExtResource("4_vnv7o")]
-position = Vector2(635, 314)
+position = Vector2(312, 314)
 
 [node name="Edges" type="StaticBody2D" parent="." unique_id=1998543548]
 collision_layer = 2
